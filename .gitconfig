@@ -1,0 +1,12 @@
+[user]
+	name = Scott Sauber
+[alias]
+	co = "!git checkout"
+	delbr = branch | grep -v master | xargs git branch -D
+	copm = "!git checkout master && git pull origin"
+  corm = "!git checkout master && git rebase origin"
+	newbr = "!git corm && git checkout -b"
+	cleanbr = "!git branch -vv | grep ' gone]' | awk '{print $1}' | xargs git branch -D"
+	stnewbr = "!git stash -u && git corm && git checkout -b $1 && git stash pop"
+[pull]
+	rebase = true
