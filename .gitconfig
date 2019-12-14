@@ -4,9 +4,13 @@
 	co = "!git checkout"
 	delbr = branch | grep -v master | xargs git branch -D
 	copm = "!git checkout master && git pull origin"
-  corm = "!git checkout master && git rebase origin"
+	corm = "!git checkout master && git rebase origin"
 	newbr = "!git corm && git checkout -b"
 	cleanbr = "!git branch -vv | grep ' gone]' | awk '{print $1}' | xargs git branch -D"
 	stnewbr = "!git stash -u && git corm && git checkout -b $1 && git stash pop"
+	pr = "!git pull -r && git log -15 --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)[%an]%Creset' --abbrev-commit"
+	rhh = "!git reset HEAD --hard"
+	po = "!git push -u origin HEAD"
+	
 [pull]
 	rebase = true
