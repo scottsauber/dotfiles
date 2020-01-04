@@ -12,5 +12,6 @@
 	rhh = "!git reset HEAD --hard"
 	po = "!git push -u origin HEAD"
 	ac = !git as && git commit -m
+	rh = !git reset HEAD~
 [pull]
 	rebase = true
