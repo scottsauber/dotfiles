@@ -11,6 +11,6 @@
 	pr = "!git pull -r && git log -15 --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)[%an]%Creset' --abbrev-commit"
 	rhh = "!git reset HEAD --hard"
 	po = "!git push -u origin HEAD"
-	
+	ac = !git as && git commit -m
 [pull]
 	rebase = true
