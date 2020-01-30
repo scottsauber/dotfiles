@@ -2,7 +2,7 @@
 	name = Scott Sauber
 [alias]
 	co = "!git checkout"
-	delbr = branch | grep -v master | xargs git branch -D
+	delbr = "!git co master && git branch | grep -v master | xargs git branch -D"
 	copm = "!git checkout master && git pull origin"
 	corm = "!git checkout master && git rebase origin"
 	newbr = "!git corm && git checkout -b"
@@ -11,7 +11,7 @@
 	pr = "!git pull -r && git log -15 --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)[%an]%Creset' --abbrev-commit"
 	rhh = "!git reset HEAD --hard"
 	po = "!git push -u origin HEAD"
-	ac = !git as && git commit -m
-	rh = !git reset HEAD~
+	ac = "!git as && git commit -m"
+	rh = "!git reset HEAD~"
 [pull]
 	rebase = true
