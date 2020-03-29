@@ -20,7 +20,7 @@ function gstnewbr() {
 }
 
 function gcp() {
-    gas && gc "$1" && gpr && gpo
+    gas && git commit -m "$1" && gpr && gpo
 }
 
 # general aliases
