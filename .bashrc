@@ -13,6 +13,7 @@ alias gpo="git push -u origin HEAD"
 alias gac="gas && git commit -m"
 alias gca="git commit --amend --no-edit"
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+alias gsu="git stash -u"
 alias gsp="git stash pop"
 
 function gstnewbr() {
