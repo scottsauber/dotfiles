@@ -26,3 +26,6 @@ function gcp() {
 
 # general aliases
 alias reload="source ~/.bashrc"
+
+#k8s aliases
+alias k='kubectl'
