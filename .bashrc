@@ -29,6 +29,8 @@ alias reload="source ~/.bashrc"
 
 # docker aliases
 alias dkill="docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q) && docker network prune"
+alias dps="docker ps"
+alias dpsa="docker ps -a"
 
 #k8s aliases
 alias k='kubectl'
