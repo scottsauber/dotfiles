@@ -27,5 +27,8 @@ function gcp() {
 # general aliases
 alias reload="source ~/.bashrc"
 
+# docker aliases
+alias dkill="docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q) && docker network prune"
+
 #k8s aliases
 alias k='kubectl'
