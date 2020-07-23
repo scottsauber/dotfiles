@@ -8,7 +8,7 @@ alias gco="git checkout"
 alias gdelbr="gco master && git branch | grep -v master | xargs git branch -D"
 alias gcopm="gco master && gpr"
 alias gnewbr="gcopm && git checkout -b"
-alias gpr="git pull -r && git log -15 --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)[%an]%Creset' --abbrev-commit"
+alias gpr="git pull -r && git log -15 --no-pager --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)[%an]%Creset' --abbrev-commit"
 alias gpo="git push -u origin HEAD"
 alias gac="gas && git commit -m"
 alias gca="git commit --amend --no-edit"
@@ -16,12 +16,33 @@ alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %
 alias gsu="git stash -u"
 alias gsp="git stash pop"
 
+# stash, checkout and pull master, create a new branch and then pop stash.  useful for when you were running on master, made changes, and forgot to create a branch first
 function gstnewbr() {
     git stash -u && git copm && git checkout -b "$1" && git stash pop
 }
 
+# add, status, commit, pull and rebase, and push.  useful for trunk based dev, albeit you should probs be running verify before pushing
+function gcpp() {
+    gas && gc "$1" && gpr && gpo
+}
+
+# add, status, commit, push.  useful for PR's
 function gcp() {
-    gas && git commit -m "$1" && gpr && gpo
+    gas && gc "$1" && gpo
+}
+
+
+# add, status, commit, push, and create a pr
+function gcpr() {
+    gcp "$1" && pr
+}
+
+# create new PR and open it
+function pr() {
+  github_url=`git remote -v | awk '/fetch/{print $2}' | sed -Ee 's#(git@|git://)#https://#' -e 's@cloud:@cloud/@' -e 's@com:@com/@'  -e 's%\.git$%%' | awk '/github/'`;
+  branch_name=`git symbolic-ref HEAD | cut -d"/" -f 3,4`;
+  pr_url=$github_url"/compare/master..."$branch_name
+  open $pr_url
 }
 
 # general aliases
