@@ -47,6 +47,7 @@ function pr() {
 
 # general aliases
 alias reload="source ~/.bashrc"
+alias bashrc="code ~/.bashrc"
 
 # docker aliases
 alias dkill="docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q) && docker network prune"
