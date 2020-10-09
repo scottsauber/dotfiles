@@ -53,6 +53,9 @@ alias bashrc="code ~/.bashrc"
 alias dkill="docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q) && docker network prune"
 alias dps="docker ps"
 alias dpsa="docker ps -a"
+alias dcd="docker-compose down"
+alias dcu="docker-compose up"
+alias dcreset="dcd && dcu"
 
 #k8s aliases
 alias k='kubectl'
