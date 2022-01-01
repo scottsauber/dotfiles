@@ -41,8 +41,14 @@ function gcpr() {
 function pr() {
   github_url=`git remote -v | awk '/fetch/{print $2}' | sed -Ee 's#(git@|git://)#https://#' -e 's@cloud:@cloud/@' -e 's@com:@com/@'  -e 's%\.git$%%' | awk '/github/'`;
   branch_name=`git symbolic-ref HEAD | cut -d"/" -f 3,4`;
-  pr_url=$github_url"/compare/master..."$branch_name
-  open $pr_url
+  main_branch=`gdefault`
+  open_or_start='open'
+  uname=$(uname)
+  if [[ "$uname" == CYGWIN* || "$uname" == MINGW* ]] ; then
+	open_or_start='start'
+  fi
+  pr_url=$github_url"/compare/$main_branch..."$branch_name
+  $open_or_start $pr_url
 }
 
 # general aliases
