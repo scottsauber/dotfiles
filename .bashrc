@@ -1,4 +1,5 @@
 # git aliases
+alias gdefault="git symbolic-ref refs/remotes/origin/HEAD | cut -d'/' -f4"
 alias gas="git add -A && git status"
 alias gs="git status"
 alias grh="git reset HEAD~"
