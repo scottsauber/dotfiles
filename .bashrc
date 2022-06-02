@@ -6,8 +6,6 @@ alias grh="git reset HEAD~"
 alias grhh="git reset HEAD --hard"
 alias gc="git commit -m"
 alias gco="git checkout"
-alias gdelbr="gco master && git branch | grep -v master | xargs git branch -D"
-alias gcopm="gco master && gpr"
 alias gnewbr="gcopm && git checkout -b"
 alias gpr="git pull -r && git --no-pager log -15 --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)[%an]%Creset' --abbrev-commit"
 alias gpo="git push -u origin HEAD"
@@ -16,6 +14,16 @@ alias gca="git commit --amend --no-edit"
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias gsu="git stash -u"
 alias gsp="git stash pop"
+
+function gdelbr() {
+  main_branch=`gdefault`
+  gco $main_branch && git branch | grep -v gdefault | xargs git branch -D
+}
+
+function gcopm() {
+  main_branch=`gdefault`
+  gco $main_branch && gpr
+}
 
 # stash, checkout and pull master, create a new branch and then pop stash.  useful for when you were running on master, made changes, and forgot to create a branch first
 function gstnewbr() {
