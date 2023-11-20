@@ -130,9 +130,9 @@ function gcopm() {
     gco $main_branch && gpr
 }
 
-# stash, checkout and pull default branch, create a new branch and then pop stash.  useful for when you were running on default branch, made changes, and forgot to create a branch first
+# stash, checkout and pull master, create a new branch and then pop stash.  useful for when you were running on master, made changes, and forgot to create a branch first
 function gstnewbr() {
-    git stash -u && git copm && git checkout -b "$1" && git stash pop
+    git stash -u && gnewbr "$1" && gsp
 }
 
 # add, status, commit, pull and rebase, and push.  useful for trunk based dev, albeit you should probs be running verify before pushing
