@@ -53,7 +53,7 @@ function pr() {
   main_branch=`gdefault`
   open_or_start='open'
   uname=$(uname)
-  if [[ "$uname" == CYGWIN* || "$uname" == MINGW* ]] ; then
+  if [[ "$uname" == CYGWIN* || "$uname" == MINGW* || "$uname" == MSYS* ]] ; then
 	open_or_start='start'
   fi
   pr_url=$github_url"/compare/$main_branch..."$branch_name
